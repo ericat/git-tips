@@ -22,15 +22,20 @@ The commit should look like this:
 <body>
 ```
 
-Git uses capitalisation and the imperative mood when merging or reverting, so that's what we use too:
+
+Git uses capitalisation and the imperative mood when merging or reverting, so that's what we use:
+
 
 __Good__ `Add validation error msg`
 
 __Bad__ `adding validation error msg`
 
-Some people prefer to use lowercase. This works well with labels, for example:
+
+Some people prefer to use _lowercase_. This works well with _labels_, for example:
+
 
 `docs(changelog): update change log to beta.5`
+
 
 A handy table for labels:
 
@@ -47,7 +52,8 @@ A handy table for labels:
 
 The above information comes from Angular's [commit standards and guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md).
 
-You should also use a body to explain what the commit does. A good idea is to references the JIRA / Github issue, for example:
+
+You should also use a _body_ to explain what the commit does. A good idea is to references the JIRA / Github issue, for example:
 
 ```
 fix: validation on text input
@@ -65,9 +71,11 @@ You can set up your editor to open a standard template on commit. Find instructi
 * Include JIRA issue;
 * Separate words with either slash, underscore or hyphen (avoid mixing and matching...).
 
+
 __Good__ `feat/SEWA-104/react-barcodes`
 
 __Bad__ `feat_SEWA_104_React-barcodes_Step-2`
+
 
 ## Setup
 #### Configure git to open your default editor on every commit:
