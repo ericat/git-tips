@@ -1,6 +1,6 @@
 # Git: an Octocat's Tale
 ---
-## Git <3
+## Git <3:
 - Setup |
 - Standards |
 - Best practices |
@@ -18,7 +18,6 @@ In .gitconfig:
 ```
 [core]
   editor = vim
-  excludesfile = /Users/ericat/.gitignore_global
 ```
 +++
 `git config --global core.editor "vim"`
@@ -29,7 +28,6 @@ In .gitconfig:
 
 ```
 [core]
-  editor = vim
   excludesfile = /Users/ericat/.gitignore_global
 ```
 
@@ -71,6 +69,9 @@ fix: validation on text input
 This fixes the validation on the text input, broken in commit a05bcd3.
 Closes SEWA-104.
 ```
+
+vs
+
 ```
 commit IV
 ```
@@ -79,12 +80,18 @@ Branches:
 
 ```
 feat/SEWA-104/react-barcodes
+```
+
+vs
+
+```
 Feature-react_barcodes-Step_1
 ```
 +++
 ## Search History
 
 `git branch -r | grep "react"`
+
 
 `git log --grep="screenshot"`
 
@@ -99,21 +106,20 @@ Date:   Fri Jul 22 16:34:20 2016 +0200
 ```
 ---
 ## Best practices: Rebasing
-* Linear history (pull --rebase)
-* Reword / delete / squash commits (git rebase -i)
+* Linear history (`pull --rebase`)
+* Reword / delete / squash commits (`git rebase -i`)
+
 
 In case things go wrong:
 
 `git rebase --abort`
 
 `git reset --HARD fa40d8c`
-
-`git push --force-with-lease`
 +++
 ## Rebasing: Rules
 
-- git revert on shared branches
-- git reset, git rebase on private branches
+- revert on shared branches
+- reset, rebase on private branches
 ---
 # Debugging
 ##  bisect, log, blame
@@ -140,19 +146,20 @@ Quick and dirty way to see the history of a file
 ---
 # How To
 ## Fix Common Issues
-+++
+---
 ## Fix a detached HEAD
 
 ```
 cat .git/HEAD
+
 ref: refs/heads/develop
 ```
 +++
+If you are on branch `develop`:
+
 `git checkout develop`
 ---
 ## Forgot to add a file
-
-`git add .`
 
 `git add -u`
 
@@ -176,7 +183,7 @@ Add / Checkout with `--patch`:
 
 `git add -p`
 
-`git grep --name-only \$tint-white | xargs vi`
 ---
 ## Git By Example
 https://github.com/ericat/git-tips
+
