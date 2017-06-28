@@ -1,12 +1,24 @@
-Setup
+Setup: Basic config
+```
+[core]
+  editor = vim
+  excludesfile = /Users/ericat/.gitignore_global
+```
++++
+`git config --global core.editor "vim"`
 ---
-Autocorrect, custom editor, aliases
+Setup: Autocorrect, aliases
+---
+Setup: Aliases
 ---
 Debugging
-bisect
+bisect, grep, blame
 ---
 Standards
 rebase
 ---
-Tools
-Hooks
+Productivity Tips
+---
+Common Issues: Fix a detached HEAD
+---
+Git By Example

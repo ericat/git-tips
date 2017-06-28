@@ -25,6 +25,7 @@ The commit should look like this:
 Git uses capitalisation and the imperative mood when merging or reverting, so that's what we use too:
 
 __Good__ `Add validation error msg`
+
 __Bad__ `adding validation error msg`
 
 Some people prefer to use lowercase. This works well with labels, for example:
@@ -65,6 +66,7 @@ You can set up your editor to open a standard template on commit. Find instructi
 * Separate words with either slash, underscore or hyphen (avoid mixing and matching...).
 
 __Good__ `feat/SEWA-104/react-barcodes`
+
 __Bad__ `feat_SEWA_104_React-barcodes_Step-2`
 
 ## Setup
@@ -119,8 +121,7 @@ coverage
 
 #### Ignore Line Endings
 
-Add:
-gitignore, ways of ignoring files
+To Add:
 gitattributes
 hooks
 aliases
@@ -129,10 +130,10 @@ aliases
 ## Git by Example
 <!--https://contegixapp1.livenation.com/confluence/display/RI/Git+Tips-->
 Comparing files
- Show history of a file
+  Show history of a file
 Finding stuff
 Undoing Commits
 Debugging
 
 ## Productivity Tips
-
+git checkout -
