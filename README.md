@@ -127,21 +127,206 @@ coverage
 .DS_Store
 ```
 
-#### Ignore Line Endings
+## Git by Tasks
+### Commit Code
+The first commit of a repository can not be rebased like regular commits, so
+it’s good practice to create an empty commit as your repository root:
 
-To Add:
-gitattributes
-hooks
-aliases
+`git commit -m “root" --allow-empty`
 
+Amend the latest message, if you haven’t pushed:
 
-## Git by Example
-<!--https://contegixapp1.livenation.com/confluence/display/RI/Git+Tips-->
-Comparing files
-  Show history of a file
-Finding stuff
-Undoing Commits
-Debugging
+`git commit --amend -m "New commit message"`
 
-## Productivity Tips
-git checkout -
+If you forgot to add a file to the latest commit, you can still reuse the same
+commit message:
+
+`git add filename`
+`git commit --amend --no-edit`
+
+### Stash Code
+Use stash when you need to do something else quickly, but you are not finished
+with what you were doing:
+
+`git add -a`
+`git stash`
+`git stash apply`
+
+Some cleanup:
+`git stash list`
+`git stash clear`
+
+`git stash pop` // will apply and delete from the stack
+
+### Inspect your changes
+Some tricks for diffing code:
+
+`git diff origin/develop`  // see all changes that we have in our working
+directory that develop does not have
+`git diff origin/develop <filename>` // can also pass a file name
+`git diff HEAD` // compare with staged changes
+`git diff -w`   // see changes without indent changes
+
+### Search Code
+`git log -3` // show the last 3
+`git log --after="2014-7-1"`
+`git log --after="yesterday"` // and also "1 week ago" or --before
+
+Examples:
+`git log —oneline`
+`git log -3`
+`git log --author="ericat"`
+`git log -p -S"Math"` // code changes that include “Math", the -p also includes the code changes
+`git log -p -G <regex>`
+`git log --no-merges`
+`git log --grep="PD-6300"`
+`git log —all --grep="PD-6300"`
+`git log --all --oneline --decorate --author="Erica" --since="1.week"`
+`git log --author=“Ericat|Keith"`
+`git log --grep="JRA-224:"` // Jira label!
+`git log — webpack.config.babel.js` // show the history of changes for a particular file. Can omit — if there is no risk of mixing it up with a branch
+`git log master..wip-star-items` // see all changes that are contained in wip but not in master.
+`git shortlog` // see history without hashes
+
+##### Pagination when logging
+When you do `git log` and you can spot a colon : at the bottom, it means you have a series of paginated results. You can navigate these results with:
+
+B (back) 
+F (forwards) 
+
+or simply  j k.
+
+You can also search withing the pagination with `/searchterm`
+
+### Some Housekeeping
+`git branch --merged master` will list all branches that have already been merged
+into `master`.
+
+Delete them:
+`git branch --merged develop | grep -v 'master$' | grep -v 'develop$' | xargs git
+branch -d`
+
+## Git By Example
+#### Switch to previous branch
+`git checkout -`
+
+#### Use grep
+Find a list of files containing a CSS variable with grep - bonus: open them in vim:
+
+`git grep —name-only \$tint-white | xargs vi`
+
+#### Abort a merge
+`git reset --hard HEAD`
+
+Checkout a specific version of a file
+`git checkout <hash> -- <file_path>`
+
+#### Show file in other git branch
+`git show fe-tests:test/acceptance/sell.js`
+`git show fe-tests:test/acceptance/sell.js | bcopy` // copy to clipboard (Mac only)
+
+#### Pick a file from another branch/commit
+`git checkout <hash> -- <path_to_file>`
+
+#### Pick a file from another branch/commit - NEW FILE
+`git checkout <other_branch> — <path_to_file>`
+
+#### Pick a file from another branch but rename it
+`git show <branch>:<path_to_file> > <new_path_to_file>`
+
+#### Find branches who are not yet merged to develop
+`git branch --no-merge develop`
+
+#### Find out branch that contain a commit
+`git branch -a —contains <hash>`
+
+#### List all dev working on a project
+`git shortlog`
+`git shortlog -s -n -e`
+`git shortlog -sn` // list devs with n of commits
+
+#### See only meaningful changes without whitespace in diffs
+`git diff -w`
+
+#### See changed words when editing prose
+`git diff --word-diff`
+
+#### View all global settings
+`git config --global -l`
+`git config --list`
+
+#### Check parent of a merge and files changes
+`git show --pretty=raw <hash>`
+
+#### Checking history of a file
+`git log -- package.json`
+`git blame package.json`
+`git blame -L150 package.json`
+`git blame -L150,+10 package.json`
+
+#### Find out which remote branch a local branch is tracking
+`git branch -vv`
+
+#### Update your remote
+`git remote set-url origin <url>`
+
+#### Find the commit where the branch was started
+Visually, through the command line:
+
+`git log --graph --oneline --all --decorate`
+
+Through a few other commands:
+
+`git reflog --date=local | grep branchname`
+
+`git cherry -v develop` // finds the diff between your branch and develop
+
+same as:
+
+`git log --oneline feat/JIRA-687-react-input ^develop`
+
+`git log develop..master` // show all commits that your branch have that are not yet in master
+
+#### Add everything but whitespace changes
+`git diff --ignore-all-space | git apply --cached`
+
+#### Find a commit that touches a particular snippet of code
+
+`git grep '<div class="ticket-price-variation">'`
+
+The above will output a list of files that contain a particular snippet. 
+
+#### Need to remove some files from a previous commit
+
+`git reset —soft HEAD^`
+
+#### Checkout a new branch from a hash
+If you want to go and checkout and old version of your code, you can do it in another branch:
+
+`git checkout -b test-branch 56a4e5c08`
+
+#### Check if a rebase is in progress
+You can check whether a rebase was in process by looking for the directory `.git/rebase-merge/`.
+
+#### See the log for the pulled in changes
+`git log upstream/master`
+
+#### Checkout only part of a file
+`git checkout -p (<filename>, optional)` // to see individual hunks
+
+For example, this comes useful when you realised you've committed yet another console.log (and you are not using a linter 😛)
+
+#### Some JIRA Help
+Find out what changed in the past two weeks (sprint goals?):
+
+`git log --since='2 weeks ago' --oneline`
+
+What have you done last week? #timesheets
+
+`git log --all --oneline  --author="Erica" --since="1.week"`
+
+Grep for a ticket name:
+
+`git log --grep="PD-6300"`
+`git log —all --grep="PD-6300"`
+
