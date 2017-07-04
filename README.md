@@ -1,5 +1,6 @@
 <h1 align="center">Git Tips</h1>
 <p align="center">Best practices, tips, examples</p>
+<img src='https://github.com/ericat/git-tips/blob/master/topguntocat.png' />
 
 # Table of Contents
 - [Git Best Practices](#git-best-practices)
@@ -45,7 +46,6 @@
     + [See the log for the pulled in changes](#see-the-log-for-the-pulled-in-changes)
     + [Checkout only part of a file](#checkout-only-part-of-a-file)
     + [Some JIRA Help](#some-jira-help)
-<img src='https://github.com/ericat/git-tips/blob/master/topguntocat.png' />
 
 ## Git Best Practices
 * Commit early and often
