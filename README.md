@@ -1,6 +1,7 @@
 <h1 align="center">Git Tips</h1>
-<p align="center">Best practices, tips, examples</p>
+<p align="center"><strong>A collection of git-related tips, tricks and best practices</strong></p>
 <img src='https://github.com/ericat/git-tips/blob/master/topguntocat.png' />
+<p align="center"><a href="https://octodex.github.com/">A collection of Octocats</a></p>
 
 # Table of Contents
 - [Git Best Practices](#git-best-practices)
@@ -183,7 +184,7 @@ coverage
 .DS_Store
 ```
 
-## Git by Tasks
+## Git by Task
 ### Commit Code
 The first commit of a repository can not be rebased like regular commits, so
 it’s good practice to create an empty commit as your repository root:
@@ -480,7 +481,7 @@ git checkout -p (<filename>, optional)
 
 This is useful when you've committed yet another console.log (you could also use eslintl with `no-console`)
 
-#### Some JIRA Help
+#### Some JIRA Assistance
 Find out what changed in the past two weeks (sprint goals?):
 
 ```
