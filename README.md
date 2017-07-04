@@ -1,4 +1,5 @@
 <h1 align="center">Git Tips</h1>
+<p align="center">Best practices, tips, examples</p>
 <img src='https://github.com/ericat/git-tips/blob/master/topguntocat.png' />
 
 ## Git Best Practices
