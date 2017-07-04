@@ -1,5 +1,5 @@
 <h1 align="center">Git Tips</h1>
-![Image of Topguntocat](https://github.com/ericat/git-tips/blob/screenshot/topguntocat.png?raw=true)
+![Image of Topguntocat](/../git-tips/blob/screenshot/topguntocat.png?raw=true)
 
 ## Git Best Practices
 * Commit early and often
