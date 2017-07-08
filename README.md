@@ -1,7 +1,7 @@
 <h1 align="center">Git Tips</h1>
 <p align="center"><strong>A collection of git-related tips, tricks and best practices</strong></p>
 <img src='https://github.com/ericat/git-tips/blob/master/topguntocat.png' />
-<p align="center"><a href="https://octodex.github.com/">A collection of Octocats</a></p>
+<p align="center">Copycat @<a href="https://octodex.github.com/">Octocats</a></p>
 
 # Table of Contents
 - [Git Best Practices](#git-best-practices)
