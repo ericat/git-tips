@@ -11,6 +11,15 @@
 # Setup
 ###  config, aliases
 ---
+# Setup: files
+`.gitconfig`
+
+`.gitignore`
+
+`.gitignore_global`
+
+`.git/hooks/`
+---
 ## Setup: default editor
 
 In .gitconfig:
@@ -32,12 +41,6 @@ In .gitconfig:
 ```
 
 Useful for node_modules, .DS_Store
----
-## Setup: line endings
-
-In .gitattributes:
-
-#### consumer here
 ---
 ## Setup: autocorrect
 
@@ -107,7 +110,7 @@ Date:   Fri Jul 22 16:34:20 2016 +0200
 ---
 ## Best practices: Rebasing
 * Linear history (`pull --rebase`)
-* Reword / delete / squash commits (`git rebase -i`)
+* Reword / delete / squash commits (`git rebase -i <hash>`)
 
 
 In case things go wrong:
@@ -138,9 +141,9 @@ Quick and dirty way to see the history of a file
 ## git bisect
 `git bisect start HEAD` // your currect code is broken
 
-`git bisect bad <hash>` // still broken
+`git bisect bad` // still broken
 
-`git bisect good <hash>` // it works!
+`git bisect good` // it works!
 
 `git bisect reset` // I'm done
 ---
