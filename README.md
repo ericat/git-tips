@@ -109,7 +109,7 @@ This is a handy table for labels:
 The above information comes from [Angular's commit standards and guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md).
 
 
-You should also use a _body_ to explain what the commit does. A good idea is to references the JIRA / Github issue, for example:
+You should also use a _body_ to explain what the commit does. A good idea is to reference the JIRA / Github issue, for example:
 
 
 ```
@@ -231,7 +231,7 @@ git stash pop
 ```
 
 ### Inspect your changes
-Some tricks for diffing code:
+Diffing code:
 
 ```
 git diff origin/develop  // see changes that develop does not have
@@ -241,6 +241,8 @@ git diff origin/develop <filename> // can also pass a file name
 git diff HEAD // compare with staged changes
 
 git diff -w   // see changes without indent changes
+
+git diff --cached // see diffs for files already in the staging area
 ```
 
 ### Search Code
@@ -290,7 +292,7 @@ F (forwards)
 
 or simply  j k.
 
-You can also search withing the pagination with `/searchterm`
+You can also search within the pagination with `/searchterm`
 
 ### Some Housekeeping
 List all branches that have already been merged into `master`:
