@@ -111,7 +111,6 @@ The above information comes from [Angular's commit standards and guidelines](htt
 
 You should also use a _body_ to explain what the commit does. A good idea is to reference the JIRA / Github issue, for example:
 
-
 ```
 fix: validation on text input
 
@@ -301,10 +300,44 @@ git branch --merged master
 ```
 
 Delete them:
-
 ```
 git branch --merged develop | grep -v 'master$' | grep -v 'develop$' | xargs git branch -d
 ```
+
+Delete local branches that have been deleted remotely:
+
+```
+git prune
+```
+
+Fetch and purge old data, making sure everything is up to date:
+
+```
+git fetch -p
+```
+
+## Git Troubleshooting
+#### Fix a detached head
+Simply chekout the current branch. If you are on a detached HEAD from develop, simply do:
+
+```
+git checkout develop
+```
+
+#### Fatal: xx cannot be resolved to branch
+This may happen if you create a branch with a similar name to another, but with a different casing.
+
+For example:
+
+`fix/SEWA-776/ism-tool-tip` and `fix/sewa-776/seatmap-tooltip`
+
+The error you may get:
+```
+fatal: fix/sewa-776/seatmap-tooltip cannot be resolved to branch.
+fatal: The remote end hung up unexpectedly
+```
+
+To fix, rename `.git/refs/head/SEWA-776` to `.git/refs/head/sewa-776`.
 
 ## Git By Example
 #### Switch to previous branch
@@ -362,6 +395,11 @@ git branch --no-merge develop
 #### Find out branch that contain a commit
 ```
 git branch -a —contains <hash>
+```
+
+#### See which branch a commit belongs to
+```
+git log --all --source --oneline
 ```
 
 #### List all dev working on a project
@@ -470,11 +508,6 @@ git checkout -b test-branch 56a4e5c08
 
 #### Check if a rebase is in progress
 You can check whether a rebase is in process by looking for the directory `.git/rebase-merge/`.
-
-#### See the log for the pulled in changes
-```
-git log upstream/master
-```
 
 #### Checkout only part of a file
 ```
