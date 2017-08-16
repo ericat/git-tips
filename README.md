@@ -121,7 +121,7 @@ Closes SEWA-104.
 
 You can set up your editor to open a standard template on commit. Find instructions [here](https://github.com/ericat/git-tips#Use-a-template-for-your-commit-messages).
 
-### Naming Branches :deciduous_tree:
+### Naming Branches
 * Prefix with `feature` or `fix` labels;
 * Use lowercase;
 * Include JIRA issue;
@@ -186,7 +186,7 @@ coverage
 ## Git by Task
 ### Commit Code
 The first commit of a repository can not be rebased like regular commits, so
-it’s good practice to create an empty commit as your repository root:
+it's good practice to create an empty commit as your repository root:
 
 ```
 git commit -m "root" --allow-empty
@@ -207,7 +207,7 @@ git commit --amend --no-edit
 ```
 
 ### Stash Code
-Use stash when you need to do something else quickly, but you are not finished
+Useful when something needs a quick fix, but you are not finished
 with what you were doing:
 
 ```
@@ -284,7 +284,7 @@ git shortlog // see history without hashes
 ```
 
 ##### Pagination when logging
-When `git log` shows a colon : at the bottom, it means only one thing: paginated results. You can navigate with:
+When `git log` shows a `:` at the bottom, it means paginated results. You can navigate with:
 
 B (back)
 F (forwards)
@@ -318,14 +318,14 @@ git fetch -p
 
 ## Git Troubleshooting
 #### Fix a detached head
-Simply chekout the current branch. If you are on a detached HEAD from develop, simply do:
+Simply chekout the current branch. If you are on a detached HEAD from develop, do:
 
 ```
 git checkout develop
 ```
 
 #### Fatal: xx cannot be resolved to branch
-This may happen if you create a branch with a similar name to another, but with a different casing.
+This may happen if you create a branch with a similar name to another, but with different casing.
 
 For example:
 
@@ -368,8 +368,6 @@ git checkout <hash> -- <file_path>
 #### Show file in other git branch
 ```
 git show fe-tests:test/acceptance/sell.js
-
-git show fe-tests:test/acceptance/sell.js | bcopy // copy to clipboard (Mac only)
 ```
 
 #### Pick a file from another branch/commit
@@ -377,7 +375,7 @@ git show fe-tests:test/acceptance/sell.js | bcopy // copy to clipboard (Mac only
 git checkout <hash> -- <path_to_file>
 ```
 
-#### Pick a file from another branch/commit - NEW FILE
+#### Pick a file from another branch/commit (that does not exist in the current branch)
 ```
 git checkout <other_branch> — <path_to_file>
 ```
@@ -392,7 +390,7 @@ git show <branch>:<path_to_file> > <new_path_to_file>
 git branch --no-merge develop
 ```
 
-#### Find out branch that contain a commit
+#### Find out which branch that contain a specific commit
 ```
 git branch -a —contains <hash>
 ```
@@ -500,7 +498,7 @@ git reset —soft HEAD^
 ```
 
 #### Checkout a new branch from a hash
-If you want to go and checkout and old version of your code, you can do it in another branch:
+If you want to checkout and old version of your code, you can do it in another branch:
 
 ```
 git checkout -b test-branch 56a4e5c08
@@ -514,10 +512,10 @@ You can check whether a rebase is in process by looking for the directory `.git/
 git checkout -p (<filename>, optional)
 ```
 
-This is useful when you've committed yet another console.log (you could also use eslintl with `no-console`)
+When you've committed yet another `console.log` (you could also use a linter :P)...
 
 #### Some JIRA Assistance
-Find out what changed in the past two weeks (sprint goals?):
+Find out what has changed in the past two weeks (sprint goals?):
 
 ```
 git log --since='2 weeks ago' --oneline
