@@ -3,38 +3,42 @@
 <img src='https://github.com/ericat/git-tips/blob/master/topguntocat.png' />
 <p align="center">Copycat @<a href="https://octodex.github.com/">Octocats</a></p>
 
-# Table of Contents
+##Table of Contents
 - [Git Best Practices](#git-best-practices)
 - [Standards](#standards)
   * [Commits](#commits)
     + [Examples](#examples)
-  * [Naming Branches :deciduous_tree:](#naming-branches-deciduous_tree)
+  * [Naming Branches](#naming-branches)
 - [Setup](#setup)
     + [Configure git to open your default editor on every commit:](#configure-git-to-open-your-default-editor-on-every-commit)
     + [Use a template for your commit messages](#use-a-template-for-your-commit-messages)
     + [Ignore Files](#ignore-files)
-- [Git by Tasks](#git-by-tasks)
+- [Git by Task](#git-by-task)
   * [Commit Code](#commit-code)
   * [Stash Code](#stash-code)
   * [Inspect your changes](#inspect-your-changes)
   * [Search Code](#search-code)
       - [Pagination when logging](#pagination-when-logging)
   * [Some Housekeeping](#some-housekeeping)
+- [Git Troubleshooting](#git-troubleshooting)
+    + [Fix a detached head](#fix-a-detached-head)
+    + [Fatal: xx cannot be resolved to branch](#fatal-xx-cannot-be-resolved-to-branch)
 - [Git By Example](#git-by-example)
     + [Switch to previous branch](#switch-to-previous-branch)
     + [Use grep](#use-grep)
     + [Abort a merge](#abort-a-merge)
     + [Show file in other git branch](#show-file-in-other-git-branch)
     + [Pick a file from another branch/commit](#pick-a-file-from-another-branchcommit)
-    + [Pick a file from another branch/commit - NEW FILE](#pick-a-file-from-another-branchcommit---new-file)
+    + [Pick a file from another branch/commit (that does not exist in the current branch)](#pick-a-file-from-another-branchcommit-that-does-not-exist-in-the-current-branch)
     + [Pick a file from another branch but rename it](#pick-a-file-from-another-branch-but-rename-it)
     + [Find branches who are not yet merged to develop](#find-branches-who-are-not-yet-merged-to-develop)
-    + [Find out branch that contain a commit](#find-out-branch-that-contain-a-commit)
+    + [Find out which branch contains a specific commit](#find-out-which-branch-contains-a-specific-commit)
+    + [See which branch a commit belongs to](#see-which-branch-a-commit-belongs-to)
     + [List all dev working on a project](#list-all-dev-working-on-a-project)
     + [See only meaningful changes without whitespace in diffs](#see-only-meaningful-changes-without-whitespace-in-diffs)
     + [See changed words when editing prose](#see-changed-words-when-editing-prose)
     + [View all global settings](#view-all-global-settings)
-    + [Check parent of a merge and files changes](#check-parent-of-a-merge-and-files-changes)
+    + [Check parent of a merge and file changes](#check-parent-of-a-merge-and-file-changes)
     + [Checking history of a file](#checking-history-of-a-file)
     + [Find out which remote branch a local branch is tracking](#find-out-which-remote-branch-a-local-branch-is-tracking)
     + [Update your remote](#update-your-remote)
@@ -44,10 +48,8 @@
     + [Need to remove some files from a previous commit](#need-to-remove-some-files-from-a-previous-commit)
     + [Checkout a new branch from a hash](#checkout-a-new-branch-from-a-hash)
     + [Check if a rebase is in progress](#check-if-a-rebase-is-in-progress)
-    + [See the log for the pulled in changes](#see-the-log-for-the-pulled-in-changes)
     + [Checkout only part of a file](#checkout-only-part-of-a-file)
-    + [Some JIRA Help](#some-jira-help)
-
+    + [Some JIRA Assistance](#some-jira-assistance)
 ## Git Best Practices
 * Commit early and often
 * Keep branches short-lived
@@ -185,7 +187,7 @@ coverage
 
 ## Git by Task
 ### Commit Code
-The first commit of a repository can not be rebased like regular commits, so
+The first commit of a repository cannot be rebased like regular commits, so
 it's good practice to create an empty commit as your repository root:
 
 ```
@@ -301,7 +303,7 @@ git branch --merged master
 
 Delete them:
 ```
-git branch --merged develop | grep -v 'master$' | grep -v 'develop$' | xargs git branch -d
+git branch --merged develop | grep -v 'master$' | xargs git branch -d
 ```
 
 Delete local branches that have been deleted remotely:
@@ -390,7 +392,7 @@ git show <branch>:<path_to_file> > <new_path_to_file>
 git branch --no-merge develop
 ```
 
-#### Find out which branch that contain a specific commit
+#### Find out which branch contains a specific commit
 ```
 git branch -a —contains <hash>
 ```
@@ -430,7 +432,7 @@ git config --global -l
 git config --list
 ```
 
-#### Check parent of a merge and files changes
+#### Check parent of a merge and file changes
 ```
 git show --pretty=raw <hash>
 ```
