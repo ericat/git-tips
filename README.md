@@ -3,7 +3,7 @@
 <img src='https://github.com/ericat/git-tips/blob/master/topguntocat.png' />
 <p align="center">Copycat @<a href="https://octodex.github.com/">Octocats</a></p>
 
-##Table of Contents
+## Table of Contents
 - [Git Best Practices](#git-best-practices)
 - [Standards](#standards)
   * [Commits](#commits)
@@ -50,7 +50,8 @@
     + [Check if a rebase is in progress](#check-if-a-rebase-is-in-progress)
     + [Checkout only part of a file](#checkout-only-part-of-a-file)
     + [Some JIRA Assistance](#some-jira-assistance)
-## Git Best Practices
+
+## Standards and Best Practices
 * Commit early and often
 * Keep branches short-lived
 * Keep branches up-to-date
@@ -59,7 +60,6 @@
 
 More on [git best practices](https://sethrobertson.github.io/GitBestPractices/#commit).
 
-## Standards
 ### Commits
 * Use consistent casing in the subject line
 * Do not end the subject line with a period
@@ -75,25 +75,22 @@ The commit should look like this:
 <body>
 ```
 
-
-#### Examples
-
-Git uses capitalisation and the imperative mood when merging or reverting, so that's what we use:
+Git uses the imperative mood when merging or reverting:
 
 **Good** `Add validation error msg`
 
 **Bad** `adding validation error msg`
 
+You can start your commit with either a lower case or an uppercase letter, but be consistent.
 
-However, some people prefer to use _lowercase_. This works well with _labels_, for example:
-
+Lowercase works well with _labels_, for example:
 
 ```
 docs(changelog): update change log to beta.5
 ```
 
 
-This is a handy table for labels:
+This is a handy table for labels [Angular's commit standards and guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md):
 
 | Label | Description |
 | ------ | ------ |
@@ -105,10 +102,6 @@ This is a handy table for labels:
 | test| Adding missing or correcting existing tests |
 | chore| Changes to the build process or auxiliary tools and libraries such as documentation generation |
 | doc | Documentation only changes |
-
-
-
-The above information comes from [Angular's commit standards and guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md).
 
 
 You should also use a _body_ to explain what the commit does. A good idea is to reference the JIRA / Github issue, for example:
@@ -127,14 +120,16 @@ You can set up your editor to open a standard template on commit. Find instructi
 * Prefix with `feature` or `fix` labels;
 * Use lowercase;
 * Include JIRA issue;
-* Separate words with either slash, underscore or hyphen (avoid mixing and matching...).
+* Separate words with either slash, underscore or hyphen (avoid mix and match)
 
 **Good** `feat/SEWA-104/react-barcodes`
 
 **Bad** `feat_SEWA_104_React-barcodes_Step-2`
 
+---
+
 ## Setup
-#### Configure git to open your default editor on every commit:
+#### Open your default editor on every commit:
 
 ```
 git config --global core.editor "code --wait"
@@ -184,6 +179,22 @@ node_modules
 coverage
 .DS_Store
 ```
+
+#### Autocorrect Typos
+```
+git config --global help.autocorrect 1
+```
+
+This will correct your typos:
+```
+git checkotu
+WARNING: You called a Git command named 'heckout', which does not exist.
+Continuing under the assumption that you meant 'checkout'
+in 0.1 seconds automatically...
+README.md
+```
+
+---
 
 ## Git by Task
 ### Commit Code
@@ -295,6 +306,8 @@ or simply  j k.
 
 You can also search within the pagination with `/searchterm`
 
+---
+
 ### Some Housekeeping
 List all branches that have already been merged into `master`:
 ```
@@ -318,6 +331,8 @@ Fetch and purge old data, making sure everything is up to date:
 git fetch -p
 ```
 
+---
+
 ## Git Troubleshooting
 #### Fix a detached head
 Simply chekout the current branch. If you are on a detached HEAD from develop, do:
@@ -340,6 +355,8 @@ fatal: The remote end hung up unexpectedly
 ```
 
 To fix, rename `.git/refs/head/SEWA-776` to `.git/refs/head/sewa-776`.
+
+---
 
 ## Git By Example
 #### Switch to previous branch
